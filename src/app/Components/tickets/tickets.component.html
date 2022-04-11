@@ -1,0 +1,48 @@
+<div class="mt-3 ml-3 mb-3">
+  <div *ngIf="tickets == []">
+    <h1>No tiene tickets comprados</h1>
+  </div>
+  <div class="card col-7 mb-3 center" *ngFor="let t of tickets">
+    <div class="row">
+      <div class="col-9 pr-0 pl-0">
+        <div class="card-header" style="background-color: #313552; color: white;">
+          <h5>Caribbean Cinemas Ticket</h5>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-8">
+              <h6 style="text-transform: uppercase;">{{t.movieName}}</h6>
+              <span style="color: gray;">Pelicula</span>
+              <hr>
+              <h6 style="text-transform: uppercase;">{{user.name}}</h6>
+              <span style="color: gray;">Nombre</span>
+              <hr>
+              <div class="row">
+                <div class="col">
+                  <h6 style="text-transform: uppercase;">$RD {{t.ticketPrice}}</h6>
+                  <span style="color: gray;">Precio</span>
+                </div>
+                <div class="col">
+                  <h6 style="text-transform: uppercase;">{{t.schedule}}</h6>
+                  <span style="color: gray;">Horario</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="seat mt-5" style="text-align: center;">
+                <h1 style="font-size: 60px; color: green;"><b>{{t.seat}}</b></h1>
+                <span style="text-transform: uppercase; font-size: 18px; color: gray;">Asiento</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-3 p-0" style="text-align: center;">
+        <img class="center img-fluid" src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Commons_QR_code.png" alt="">
+        <h6 class="mt-4" style="text-transform: uppercase;">#{{t.ticketCode}}</h6>
+        <h6 style="text-transform: uppercase; color: green;" *ngIf="t.isAlreadyPrinted == false">Sin imprimir</h6>
+        <h6 style="text-transform: uppercase; color: red;" *ngIf="t.isAlreadyPrinted != false">impreso</h6>
+      </div>
+    </div>
+  </div>
+</div>

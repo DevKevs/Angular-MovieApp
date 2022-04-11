@@ -1,0 +1,73 @@
+<div class="row">
+  <div class="col-lg-9">
+    <div class="container mt-3 mb-3">
+      <div class="col mb-3 p-0">
+        <input placeholder="Nombre de la pelicula" type="text" class="form-control" (input)="movieFilter($event)">
+      </div>
+      <div class="spinner-border" role="status" *ngIf="Movies == null">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="row">
+        <div class="Content mt-2 ml-2" *ngFor="let m of Movies | filter:search">
+          <div class="panel border border-top-color mr-2">
+            <div class="img-fluid" id="card-image" style="background-image: url({{m.photo}});"></div>
+            <div class="detalle border-top-color">
+              <h4 class="ml-2 pt-2" style="text-transform: capitalize;"><b>{{m.name}}</b></h4>
+                <div class="row mb-2">
+                  <div class="col">
+                    <button class="form-control ml-2" style="text-transform: uppercase; background-color: #2EB086; color: white;" (click)="navToMovie(m)">ver mas</button>
+                  </div>
+                  <div class="col">
+                      <h5 class="d-inline float-right mr-2 text-success">$RD {{m.ticketPrice}}</h5>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 p-0">
+   <div class="container pt-3">
+     <div class="card mb-2 mr-2">
+        <div class="card-header">
+          <h5>Filtros</h5>
+        </div>
+        <div class="card-body">
+           <label for=""><b>Generos</b></label>
+           <select [(ngModel)]="gender" class="form-control">
+            <option value="All">Todo</option>
+            <option value="Accion">Accion</option>
+            <option value="Comedia">Comedia</option>
+            <option value="Terror">Terror</option>
+            <option value="Romance">Romance</option>
+            <option value="Ciencia Ficcion">Ciencia Ficcion</option>
+           </select>
+          <button class="form-control mt-2" (click)="genderFilter()" style="background-color: #2EB086; color: white;">Buscar</button>
+        </div>
+     </div>
+
+     <div class="card mb-2 mr-2">
+      <div class="card-header">
+        <h5>Redes sociales</h5>
+      </div>
+      <div class="card-body">
+        <div class="row mb-2 ml-2">
+          <a href="https://www.facebook.com/caribbeancinemasrd" target="_blank"><img src="../../../assets/img/facebook.svg" width="30px" height="30px" alt=""></a>
+          <h5 class="mt-1 ml-2">Facebook</h5>
+        </div>
+        <div class="row mb-2 ml-2">
+          <a href="https://twitter.com/caribbeancine" target="_blank"><img src="../../../assets/img/Twitter-logo.svg.png" width="30px" height="30px" alt=""></a>
+          <h5 class="mt-1 ml-2">Twitter</h5>
+        </div>
+        <div class="row mb-2 ml-2">
+          <a href="https://www.instagram.com/caribbeancinemasrd/" target="_blank"><img src="../../../assets/img/instagram.png" width="30px" height="30px" alt=""></a>
+          <h5 class="mt-1 ml-2">Instagram</h5>
+        </div>
+
+      </div>
+   </div>
+   </div>
+  </div>
+</div>
+
